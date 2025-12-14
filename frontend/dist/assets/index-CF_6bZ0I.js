@@ -11,6 +11,9 @@ function Login() {
     setError("");
     setLoading(true);
 
+    // 🔍 Debug (can remove later)
+    console.log("API URL =", process.env.REACT_APP_API_URL);
+
     try {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/auth/login`,
@@ -32,13 +35,13 @@ function Login() {
 
       const data = await response.json();
 
-      // save token (demo token)
+      // Save demo token
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
 
-      alert("Login success!");
+      alert("Login success");
 
-      // example redirect
+      // Redirect (optional)
       window.location.href = "/dashboard";
 
     } catch (err) {
@@ -86,4 +89,3 @@ function Login() {
 }
 
 export default Login;
-console.log("API URL=",process.env.REACT_APP_API_URL);
